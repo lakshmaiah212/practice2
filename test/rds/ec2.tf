@@ -12,4 +12,31 @@ resource "aws_instance" "mariadb-client" {
     project_name = "${var.project_name}"
     project_env = "${var.project_env}"
   }
+
+
+   provisioner "file" {
+    connection {
+    type     = "ssh"
+    user     = "root" 
+  }
+    source      = "rds/schema.sql"
+    destination = "/tmp/schema.sql"
+  }
+
+  
+  provisioner "remote-exec" {
+
+    connection {
+    type     = "ssh"
+    user     = "root"
+    
+  }
+
+
+    inline = [
+      "yum install mariadb -y ",
+      "mysql -h ${aws_db_instance.dev_rds.address} -u student -p student1 </tmp/schema.sql",
+    ]
+  }
+  
 }
