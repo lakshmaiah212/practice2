@@ -32,7 +32,7 @@ resource "aws_route_table_association" "public_Subnet_association" {
 resource "aws_subnet" "private_subnets" {
   count = "${length(data.aws_availability_zones.available.names)}"
   vpc_id     = "${aws_vpc.test_vpc.id}"
-  cidr_block = "${cidrsubnet(var.vpc_cidr, 3, count.index)}"
+  cidr_block = "${cidrsubnet(var.vpc_cidr, 3, count.index+5)}"
 
   tags = {
     Name = "privatesubnets-${count.index}"
