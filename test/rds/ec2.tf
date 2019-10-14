@@ -18,6 +18,7 @@ resource "aws_instance" "mariadb-client" {
     connection {
     type     = "ssh"
     user     = "root" 
+    host     = "${self.public_ip}"
   }
     source      = "rds/schema.sql"
     destination = "/tmp/schema.sql"
@@ -29,6 +30,7 @@ resource "aws_instance" "mariadb-client" {
     connection {
     type     = "ssh"
     user     = "root"
+    host     = "${self.public_ip}"
     
   }
 
