@@ -14,3 +14,13 @@ module "ec2" {
   project_env = "${var.project_env}"
   
 }
+
+module "rds" {
+  source = "./rds"
+  subnets_id = "${module.vpc.subnets_id}"
+  vpc_id = "${module.vpc.vpc_id}"
+  project_name = "${var.project_name}"
+  project_env = "${var.project_env}"
+  
+}
+
