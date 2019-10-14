@@ -1,4 +1,6 @@
-variable "subnets_id" {}
+variable "subnets_id" {
+    type = "list"
+}
 
 variable "vpc_id" {}
 
