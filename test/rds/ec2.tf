@@ -1,6 +1,6 @@
 resource "aws_instance" "mariadb-client" {
   count = 1
-  ami           = "ami-0b69ea66ff7391e80"
+  ami           = "ami-04763b3055de4860b"
   instance_type = "t2.micro"
   key_name    = "endpoint"
   subnet_id   =  "${element(var.subnets_id,count.index)}"

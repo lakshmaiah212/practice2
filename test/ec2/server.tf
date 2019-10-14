@@ -13,4 +13,8 @@ resource "aws_instance" "web" {
     project_name = "${var.project_name}"
     project_env = "${var.project_env}"
   }
+  
+   
+
+
 }
