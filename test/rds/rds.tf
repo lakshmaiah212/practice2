@@ -4,7 +4,7 @@ resource "aws_db_instance" "dev_rds" {
   engine               = "mariadb"
   engine_version       = "10.3"
   instance_class       = "db.t2.micro"
-  name                 = "studentapp-db"
+  name                 = "studentapp"
   username             = "student"
   password             = "student1"
   parameter_group_name = "${aws_db_parameter_group.rds_parametergroup.name}"
