@@ -32,7 +32,7 @@ resource "aws_route_table_association" "public_Subnet_association" {
 resource "aws_subnet" "private_subnets" {
   count = "${length(data.aws_availability_zones.available.names)}"
   vpc_id     = "${aws_vpc.test_vpc.id}"
-  cidr_block = "${cidrsubnet(var.vpc_cidr, 3, count.index+5)}"
+  cidr_block = "${cidrsubnet(var.vpc_cidr, 3, count.index+6)}"
 
   tags = {
     Name = "privatesubnets-${count.index}"
@@ -49,6 +49,6 @@ resource "aws_route_table" "privatesubnet_routetable" {
 
 resource "aws_route_table_association" "private_Subnet_association" {
   count = "${length(data.aws_availability_zones.available.names)}"
-  subnet_id      = "${element(aws_subnet.private_subnets.*.id, count.index+5)}"
+  subnet_id      = "${element(aws_subnet.private_subnets.*.id, count.index+6)}"
   route_table_id = "${aws_route_table.privatesubnet_routetable.id}"
 }
